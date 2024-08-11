@@ -2,5 +2,4 @@ streamlit
 newspaper3k
 nltk
 lxml_html_clean 
-nltk.download('punkt')
-nltk.download('stopwords')
+
