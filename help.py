@@ -220,8 +220,8 @@ if topic:
         st.write(','.join(key))
 
         summary = summarize_article(article)
-        st.subheader("Summary")
-        st.write(summary)
+        # st.subheader("Summary")
+        # st.write(summary)
 
         tab1, tab2 = st.tabs(['Full Article', 'Summary'])
         with tab1:
