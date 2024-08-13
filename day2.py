@@ -87,16 +87,21 @@ if topic:
 
 
         # if you want images from the article then use this code 
-        images = list(article.images)
-        st.subheader("Image from article")
-        if images:
-            st.image(images[0], use_column_width=True)
+        # images = list(article.images)
+        # if images is None:
+        #     st.subheader(" ")
 
-            
+        # else:
+        #     st.subheader("Image from article")
+        #     st.image(images[0], use_column_width=True)
+
+
         # if you want images from wikipedia then use this 
         wikipedia_image = get_wikipedia_image(topic)
-        st.subheader("Image from Wikipedia")
-        if wikipedia_image:
+        if wikipedia_image is None:
+            st.subheader(" ")
+        else:
+            st.subheader("Image from Wikipedia")
             st.image(wikipedia_image, use_column_width=True)
 
 
