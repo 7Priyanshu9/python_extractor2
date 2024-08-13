@@ -3,3 +3,4 @@ newspaper3k
 nltk
 lxml_html_clean 
 googlesearch-python 
+wikipedia
