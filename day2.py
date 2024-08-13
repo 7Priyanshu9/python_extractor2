@@ -70,6 +70,12 @@ if topic:
         # st.subheader("Summary")
         # st.write(summary)
 
+        images = list(article.images)
+        st.subheader("Image")
+        if images:
+            st.image(images[0], use_column_width=True)
+
+        
         tab1, tab2 = st.tabs(['Full Article', 'Summary'])
         with tab1:
             st.write(article.text)
