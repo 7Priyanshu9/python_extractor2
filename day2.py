@@ -6,6 +6,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from collections import defaultdict
 from googlesearch import search
+import wikipedia
 
 nltk.download('punkt')
 nltk.download('punkt_tab')
@@ -44,6 +45,19 @@ def get_top_websites(topic, num_results=2):
         print(f"An error occurred: {e}")
     return websites
 
+def get_wikipedia_image(topic):
+    try:
+        page = wikipedia.page(topic)
+        images = page.images
+        if images:
+            return images[0]
+        else:
+            return None
+    except wikipedia.exceptions.DisambiguationError as e:
+        return None
+    except wikipedia.exceptions.PageError as e:
+        return None
+
 st.title("Hello there!")
 topic = st.text_input("Enter topic", placeholder="Enter topic here ")
 
@@ -70,12 +84,22 @@ if topic:
         # st.subheader("Summary")
         # st.write(summary)
 
+
+
+        # if you want images from the article then use this code 
         images = list(article.images)
-        st.subheader("Image")
+        st.subheader("Image from article")
         if images:
             st.image(images[0], use_column_width=True)
 
-        
+            
+        # if you want images from wikipedia then use this 
+        wikipedia_image = get_wikipedia_image(topic)
+        st.subheader("Image from Wikipedia")
+        if wikipedia_image:
+            st.image(wikipedia_image, use_column_width=True)
+
+
         tab1, tab2 = st.tabs(['Full Article', 'Summary'])
         with tab1:
             st.write(article.text)
